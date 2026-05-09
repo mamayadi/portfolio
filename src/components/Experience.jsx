@@ -96,7 +96,7 @@ export default function Experience() {
               <div className="flex flex-wrap justify-between gap-4 px-6 pt-6 pb-4 border-b border-white/[0.07]">
                 <div className="flex items-center gap-4">
                   <CompanyLogo
-                    src="public/assets/logos/april.svg"
+                    src="./assets/logos/april.svg"
                     fallbackText="APR"
                     bg="bg-orange-500/10 border-orange-500/25"
                     textColor="text-orange-400"
@@ -127,7 +127,7 @@ export default function Experience() {
               <div className="flex flex-wrap justify-between gap-4 px-6 pt-6 pb-4 border-b border-white/[0.07]">
                 <div className="flex items-center gap-4">
                   <CompanyLogo
-                    src="public/assets/logos/sifast.jpg"
+                    src="./assets/logos/sifast.jpg"
                     fallbackText="SF"
                     bg="bg-blue-500/10 border-blue-500/25"
                     textColor="text-blue-400"
