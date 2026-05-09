@@ -1,15 +1,18 @@
-.PHONY: dev docker-dev stop clean
+.PHONY: dev build preview docker-dev stop clean
 
-# Start local dev server with live reload (requires Node.js)
+# Start Vite dev server (hot module reload built-in)
 dev:
-	@echo "Starting dev server at http://localhost:3000"
-	npx --yes browser-sync start \
-		--server \
-		--files "*.html, *.css, *.js, assets/**" \
-		--port 3000 \
-		--no-notify
+	npm run dev
 
-# Start with Docker (production-like nginx)
+# Build for production
+build:
+	npm run build
+
+# Preview production build locally
+preview:
+	npm run preview
+
+# Build and start with Docker (nginx, production-like)
 docker-dev:
 	docker compose up --build
 
@@ -17,6 +20,7 @@ docker-dev:
 stop:
 	docker compose down
 
-# Remove Docker containers and images
+# Remove containers, images and build output
 clean:
 	docker compose down --rmi local --volumes
+	rm -rf dist
