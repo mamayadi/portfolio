@@ -8,7 +8,7 @@ export const translations = {
     'nav.contact':         'Contact',
 
     'hero.available':   'Disponible',
-    'hero.unavailable': 'Non disponible',
+    'hero.unavailable': 'En mission',
     'hero.greeting':  'Bonjour, je suis',
     'hero.title':     'Ingénieur DevOps',
     'hero.subtitle':  'Kubernetes · Docker · Azure · Terraform · CI/CD · Ansible',

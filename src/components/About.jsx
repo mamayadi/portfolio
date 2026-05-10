@@ -1,6 +1,7 @@
-import { MapPin, Mail, Phone, Linkedin, Github } from 'lucide-react'
-import { useLang } from '../context/LangContext'
+import { Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
+
 import Reveal from './Reveal'
+import { useLang } from '../context/LangContext'
 
 const CONTACT_LINKS = [
   { icon: MapPin,   label: 'Lyon, France',                   href: null },
@@ -20,9 +21,9 @@ export default function About() {
   const { t } = useLang()
 
   return (
-    <section id="about" className="py-24 bg-base">
+    <section id="about" className="py-16 md:py-24 bg-base">
       <div className="max-w-[1180px] mx-auto px-6">
-        <Reveal className="text-center mb-16">
+        <Reveal className="text-center mb-10 md:mb-16">
           <span className="font-mono text-[13px] text-blue-400/70 tracking-wide block mb-2">{t('about.tag')}</span>
           <h2 className="text-[clamp(26px,4vw,40px)] font-bold tracking-tight">{t('about.title')}</h2>
         </Reveal>
@@ -43,7 +44,7 @@ export default function About() {
               </div>
               {/* Profile photo */}
               <img
-                src="./assets/profile.jpg"
+                src="./assets/profile.png"
                 alt="Mohamed AYADI"
                 className="absolute inset-0 w-full h-full rounded-full object-cover object-top z-[3]"
                 onError={e => { e.currentTarget.style.display = 'none' }}

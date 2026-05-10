@@ -45,9 +45,9 @@ export default function Education() {
   const { t } = useLang()
 
   return (
-    <section id="education" className="py-24 bg-base-alt">
+    <section id="education" className="py-16 md:py-24 bg-base-alt">
       <div className="max-w-[1180px] mx-auto px-6">
-        <Reveal className="text-center mb-16">
+        <Reveal className="text-center mb-10 md:mb-16">
           <span className="font-mono text-[13px] text-blue-400/70 tracking-wide block mb-2">{t('edu.tag')}</span>
           <h2 className="text-[clamp(26px,4vw,40px)] font-bold tracking-tight">{t('edu.title')}</h2>
         </Reveal>
@@ -59,7 +59,7 @@ export default function Education() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex gap-5 p-7 bg-card border border-white/[0.07] rounded-xl hover:border-blue-400/30 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(96,165,250,0.1)] transition-all duration-300 h-full group"
+                className="flex gap-4 p-5 md:p-7 bg-card border border-white/[0.07] rounded-xl hover:border-blue-400/30 hover:-translate-y-1 hover:shadow-[0_8px_32px_rgba(96,165,250,0.1)] transition-all duration-300 h-full group"
               >
                 <SchoolLogo src={logo} alt={school} />
                 <div>

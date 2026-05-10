@@ -58,9 +58,9 @@ export default function Certifications() {
   const { t } = useLang()
 
   return (
-    <section id="certifications" className="py-24 bg-base">
+    <section id="certifications" className="py-16 md:py-24 bg-base">
       <div className="max-w-[1180px] mx-auto px-6">
-        <Reveal className="text-center mb-16">
+        <Reveal className="text-center mb-10 md:mb-16">
           <span className="font-mono text-[13px] text-blue-400/70 tracking-wide block mb-2">{t('cert.tag')}</span>
           <h2 className="text-[clamp(26px,4vw,40px)] font-bold tracking-tight">{t('cert.title')}</h2>
         </Reveal>

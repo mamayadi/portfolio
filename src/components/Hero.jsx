@@ -101,7 +101,7 @@ export default function Hero() {
         </p>
 
         {/* CTAs */}
-        <div className="flex gap-3 justify-center flex-wrap mb-14">
+        <div className="flex gap-3 justify-center flex-wrap mb-10 sm:mb-14">
           <a
             href="#experience"
             className="px-6 py-3 bg-blue-400 text-base rounded-lg font-medium text-sm hover:bg-blue-300 hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_24px_rgba(96,165,250,0.25)] hover:shadow-[0_8px_32px_rgba(96,165,250,0.45)]"
@@ -124,23 +124,23 @@ export default function Hero() {
         </div>
 
         {/* Stats with count-up */}
-        <div className="flex justify-center items-center gap-7 flex-wrap">
+        <div className="grid grid-cols-3 gap-4 sm:flex sm:justify-center sm:items-center sm:gap-7">
           <div className="text-center">
-            <span className="block font-mono text-[34px] font-bold text-blue-400 leading-[1.1]">
+            <span className="block font-mono text-[28px] sm:text-[34px] font-bold text-blue-400 leading-[1.1]">
               <CountUp to={5} suffix="+" />
             </span>
             <span className="text-xs text-slate-400">{t('hero.stat1')}</span>
           </div>
-          <div className="w-px h-9 bg-white/[0.13]" />
+          <div className="hidden sm:block w-px h-9 bg-white/[0.13]" />
           <div className="text-center">
-            <span className="block font-mono text-[34px] font-bold text-blue-400 leading-[1.1]">
+            <span className="block font-mono text-[28px] sm:text-[34px] font-bold text-blue-400 leading-[1.1]">
               <CountUp to={3} />
             </span>
             <span className="text-xs text-slate-400">{t('hero.stat2')}</span>
           </div>
-          <div className="w-px h-9 bg-white/[0.13]" />
+          <div className="hidden sm:block w-px h-9 bg-white/[0.13]" />
           <div className="text-center">
-            <span className="block font-mono text-[34px] font-bold text-blue-400 leading-[1.1]">
+            <span className="block font-mono text-[28px] sm:text-[34px] font-bold text-blue-400 leading-[1.1]">
               <CountUp to={15} suffix="+" />
             </span>
             <span className="text-xs text-slate-400">{t('hero.stat3')}</span>

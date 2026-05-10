@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 
 const transforms = {
-  up:    { hidden: 'translateY(32px)',  visible: 'translateY(0)' },
-  down:  { hidden: 'translateY(-32px)', visible: 'translateY(0)' },
-  left:  { hidden: 'translateX(-40px)', visible: 'translateX(0)' },
-  right: { hidden: 'translateX(40px)',  visible: 'translateX(0)' },
-  scale: { hidden: 'scale(0.90)',       visible: 'scale(1)' },
-  none:  { hidden: 'none',              visible: 'none' },
+  up:    { hidden: 'translateY(24px)',  visible: 'translateY(0)' },
+  down:  { hidden: 'translateY(-24px)', visible: 'translateY(0)' },
+  left:  { hidden: 'translateX(-24px)', visible: 'translateX(0)' },
+  right: { hidden: 'translateX(24px)',  visible: 'translateX(0)' },
+  scale: { hidden: 'scale(0.93)',       visible: 'scale(1)' },
+  none:  { hidden: 'none',             visible: 'none' },
 }
 
 export default function Reveal({ children, className = '', delay = 0, from = 'up' }) {
