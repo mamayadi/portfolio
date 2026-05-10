@@ -78,14 +78,9 @@ html:not(.dark) .bg-white\/\[0\.13\]  { background-color: rgb(0 0 0 / 0.07); }
 /* Hover bg overlays */
 html:not(.dark) .hover\:bg-white\/\[0\.09\]:hover { background-color: rgb(0 0 0 / 0.05); }
 
-/* Shimmer sweep — use dark shimmer on light cards */
+/* Shimmer sweep — designed for dark cards only; remove entirely in light mode */
 html:not(.dark) .shimmer-card::after {
-  background: linear-gradient(
-    105deg,
-    transparent 40%,
-    rgba(0, 0, 0, 0.04) 50%,
-    transparent 60%
-  );
+  content: none;
 }
 
 /* Hero grid — slightly more visible on light backgrounds */

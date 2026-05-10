@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { GraduationCap, MapPin } from 'lucide-react'
+import { ExternalLink, GraduationCap, MapPin } from 'lucide-react'
 import { useLang } from '../context/LangContext'
 import Reveal from './Reveal'
 
@@ -67,8 +67,12 @@ function TimelineCard({ entry, t }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group flex flex-col p-6 bg-card border border-white/[0.07] rounded-xl transition-all duration-300 hover:-translate-y-1 ${ac.hover}`}
+      className={`group relative flex flex-col p-6 bg-card border border-white/[0.07] rounded-xl transition-all duration-300 hover:-translate-y-1 ${ac.hover}`}
     >
+      <ExternalLink
+        size={14}
+        className="absolute top-4 right-4 text-slate-400"
+      />
       <div className="flex items-center gap-3 mb-3">
         <SchoolLogo src={logo} alt={school} />
         <span className={`font-mono text-xs font-semibold tracking-widest ${ac.date}`}>

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Calendar, ChevronDown, FolderOpen, MapPin } from 'lucide-react'
 import {
   SiAngular,
@@ -23,6 +22,7 @@ import {
 
 import Reveal from './Reveal'
 import { useLang } from '../context/LangContext'
+import { useState } from 'react'
 
 const AzureIcon = ({ size = 11 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -104,15 +104,15 @@ const SIFAST_PROJECTS = [
 
 /* Per-company accent tokens — all class names are static for Tailwind JIT */
 const ACCENT = {
-  orange: {
-    bar:     'from-orange-400 via-amber-400 to-orange-300',
-    glow:    'from-orange-400/[0.06] via-transparent to-transparent',
-    role:    'text-orange-400',
-    dot:     'bg-orange-400',
-    dotGlow: 'shadow-[0_0_0_4px_rgba(251,146,60,0.2),0_0_14px_rgba(251,146,60,0.35)]',
-    bullet:  'text-orange-400',
-    logoBg:  'bg-orange-500/10 border-orange-500/25 text-orange-400',
-    card:    'hover:border-orange-400/25 hover:shadow-[0_12px_48px_rgba(251,146,60,0.09)]',
+  green: {
+    bar:     'from-green-400 via-lime-400 to-green-400',
+    glow:    'from-green-400/[0.06] via-transparent to-transparent',
+    role:    'text-green-400',
+    dot:     'bg-green-400',
+    dotGlow: 'shadow-[0_0_0_4px_rgba(99,158,48,0.2),0_0_14px_rgba(99,158,48,0.35)]',
+    bullet:  'text-green-400',
+    logoBg:  'bg-green-500/10 border-green-400/25 text-green-400',
+    card:    'hover:border-green-400/25 hover:shadow-[0_12px_48px_rgba(99,158,48,0.09)]',
   },
   blue: {
     bar:     'from-blue-400 via-indigo-400 to-violet-400',
@@ -134,7 +134,7 @@ const COMPANIES = [
     location: 'Lyon, France',
     logo:     './assets/logos/april.svg',
     fallback: 'APR',
-    accent:   'orange',
+    accent:   'green',
     roleKey:  'exp.role_devops',
     itemKeys: APRIL_ITEMS,
     prefix:   'exp.april',
