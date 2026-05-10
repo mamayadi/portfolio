@@ -59,6 +59,7 @@
     background-size: 200% 100%;
     opacity: 0;
     transition: opacity 0.3s;
+    pointer-events: none;
   }
   .shimmer-card:hover::after {
     opacity: 1;

@@ -1,8 +1,51 @@
-import { ChevronDown, MapPin } from 'lucide-react'
+import { ChevronDown, MapPin, Calendar, Clock, FolderOpen } from 'lucide-react'
+import {
+  SiKubernetes, SiDocker, SiHelm, SiPodman,
+  SiJenkins, SiGitlab, SiAnsible, SiArgo,
+  SiTerraform,
+  SiGrafana, SiPrometheus, SiElasticsearch, SiElasticstack,
+  SiRedis, SiSonarqubeserver,
+  SiAngular, SiSymfony,
+} from 'react-icons/si'
 
 import Reveal from './Reveal'
 import { useLang } from '../context/LangContext'
 import { useState } from 'react'
+
+// Custom SVG icons (shared with Skills.jsx)
+const AzureIcon = ({ size = 11 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M13.05 4.24L6.56 18.05H2L7.09 9.24L13.05 4.24ZM13.74 5.33L22 18.05H9.83L17.29 16.56L12.33 10.62L13.74 5.33Z"/>
+  </svg>
+)
+
+const GraviteeIcon = ({ size = 11 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M14 12h-2v2h2v1.5c-.5.3-1.2.5-2 .5-2.2 0-4-1.8-4-4s1.8-4 4-4c1.1 0 2 .4 2.8 1l1.4-1.5A5.9 5.9 0 0 0 12 6a6 6 0 0 0 0 12c1.8 0 3.4-.8 4.5-2V12H14z"/>
+  </svg>
+)
+
+const TECH_ICONS = {
+  'Gravitee APIM/AM': GraviteeIcon,
+  'Ansible':          SiAnsible,
+  'Podman':           SiPodman,
+  'Terraform':        SiTerraform,
+  'Azure':            AzureIcon,
+  'Jenkins':          SiJenkins,
+  'Redis':            SiRedis,
+  'ELK Stack':        SiElasticstack,
+  'Grafana':          SiGrafana,
+  'Kubernetes':       SiKubernetes,
+  'Docker':           SiDocker,
+  'HELM':             SiHelm,
+  'ArgoCD':           SiArgo,
+  'Prometheus':       SiPrometheus,
+  'SonarQube':        SiSonarqubeserver,
+  'GitLab CI/CD':     SiGitlab,
+  'Elasticsearch':    SiElasticsearch,
+  'Angular':          SiAngular,
+  'Symfony':          SiSymfony,
+}
 
 const APRIL_ITEMS = ['i1','i2','i3','i4','i5','i6','i7','i8','i9']
 const APRIL_TAGS  = ['Gravitee APIM/AM','Ansible','Podman','Terraform','Azure','Jenkins','Redis','ELK Stack','Grafana','SELinux']
@@ -27,7 +70,7 @@ function CompanyLogo({ src, fallbackText, bg, textColor }) {
         src={src}
         alt={fallbackText}
         onError={() => setImgFailed(true)}
-        className="w-12 h-12 rounded-xl object-contain p-1.5 bg-white"
+        className="w-12 h-12 rounded-xl object-contain p-1.5 bg-white flex-shrink-0"
       />
     )
   }
@@ -55,11 +98,54 @@ function BulletList({ items }) {
 function Tags({ tags }) {
   return (
     <div className="flex flex-wrap gap-1.5 mt-4">
-      {tags.map(tag => (
-        <span key={tag} className="px-2.5 py-1 text-[11px] font-mono bg-white/[0.04] border border-white/[0.07] text-slate-500 rounded hover:text-blue-400 hover:border-blue-400/25 hover:bg-blue-400/[0.04] transition-all duration-300">
-          {tag}
+      {tags.map(tag => {
+        const TIcon = TECH_ICONS[tag]
+        return (
+          <span
+            key={tag}
+            className="flex items-center gap-1 px-2.5 py-1 text-[11px] font-mono bg-white/[0.04] border border-white/[0.07] text-slate-500 rounded hover:text-blue-400 hover:border-blue-400/25 hover:bg-blue-400/[0.04] transition-all duration-300"
+          >
+            {TIcon && <TIcon size={11} />}
+            {tag}
+          </span>
+        )
+      })}
+    </div>
+  )
+}
+
+function DurationBadge({ label }) {
+  return (
+    <span className="inline-flex items-center gap-1 font-mono text-[10px] text-slate-500 bg-white/[0.04] border border-white/[0.07] px-2 py-0.5 rounded">
+      <Clock size={9} />
+      {label}
+    </span>
+  )
+}
+
+function CardHeader({ logo, company, role, date, duration, location }) {
+  return (
+    <div className="flex flex-wrap justify-between gap-x-4 gap-y-3 px-6 pt-6 pb-4 border-b border-white/[0.07]">
+      {/* Left: logo + company + role */}
+      <div className="flex items-center gap-4">
+        {logo}
+        <div>
+          <h3 className="text-xl font-bold mb-0.5">{company}</h3>
+          <span className="text-sm text-blue-400 font-medium">{role}</span>
+        </div>
+      </div>
+      {/* Right: date + duration + location — left on mobile, right on desktop */}
+      <div className="flex flex-col items-start sm:items-end gap-1.5 justify-center">
+        <span className="flex items-center gap-1.5 font-mono text-xs text-slate-400">
+          <Calendar size={11} />
+          {date}
         </span>
-      ))}
+        <DurationBadge label={duration} />
+        <span className="flex items-center gap-1.5 text-xs text-slate-600">
+          <MapPin size={11} />
+          {location}
+        </span>
+      </div>
     </div>
   )
 }
@@ -93,26 +179,21 @@ export default function Experience() {
           <Reveal from="left" className="relative pl-[58px] mb-10">
             <div className="absolute left-[11px] top-[22px] w-[18px] h-[18px] rounded-full bg-blue-400 border-[3px] border-base shadow-[0_0_0_4px_rgba(96,165,250,0.25),0_0_16px_rgba(96,165,250,0.4)] z-10" />
             <TimelineCard>
-              <div className="flex flex-wrap justify-between gap-4 px-6 pt-6 pb-4 border-b border-white/[0.07]">
-                <div className="flex items-center gap-4">
+              <CardHeader
+                logo={
                   <CompanyLogo
                     src="./assets/logos/april.svg"
                     fallbackText="APR"
                     bg="bg-orange-500/10 border-orange-500/25"
                     textColor="text-orange-400"
                   />
-                  <div>
-                    <h3 className="text-xl font-bold mb-0.5">APRIL</h3>
-                    <span className="text-sm text-blue-400 font-medium">{t('exp.role_devops')}</span>
-                  </div>
-                </div>
-                <div className="flex flex-col items-end gap-1 justify-center">
-                  <span className="font-mono text-xs text-slate-400">10/2023 – 12/2024</span>
-                  <span className="flex items-center gap-1.5 text-xs text-slate-600">
-                    <MapPin size={11} />Lyon, France
-                  </span>
-                </div>
-              </div>
+                }
+                company="APRIL"
+                role={t('exp.role_devops')}
+                date="10/2023 – 12/2024"
+                duration="1 yr 2 mos"
+                location="Lyon, France"
+              />
               <div className="px-6 py-5">
                 <BulletList items={APRIL_ITEMS.map(k => t(`exp.april.${k}`))} />
                 <Tags tags={APRIL_TAGS} />
@@ -124,46 +205,55 @@ export default function Experience() {
           <Reveal from="right" delay={120} className="relative pl-[58px]">
             <div className="absolute left-[11px] top-[22px] w-[18px] h-[18px] rounded-full bg-blue-400 border-[3px] border-base shadow-[0_0_0_4px_rgba(96,165,250,0.25),0_0_16px_rgba(96,165,250,0.4)] z-10" />
             <TimelineCard>
-              <div className="flex flex-wrap justify-between gap-4 px-6 pt-6 pb-4 border-b border-white/[0.07]">
-                <div className="flex items-center gap-4">
+              <CardHeader
+                logo={
                   <CompanyLogo
                     src="./assets/logos/sifast.jpg"
                     fallbackText="SF"
                     bg="bg-blue-500/10 border-blue-500/25"
                     textColor="text-blue-400"
                   />
-                  <div>
-                    <h3 className="text-xl font-bold mb-0.5">SiFAST</h3>
-                    <span className="text-sm text-blue-400 font-medium">{t('exp.role_devops')}</span>
-                  </div>
-                </div>
-                <div className="flex flex-col items-end gap-1 justify-center">
-                  <span className="font-mono text-xs text-slate-400">02/2019 – 09/2023</span>
-                  <span className="flex items-center gap-1.5 text-xs text-slate-600">
-                    <MapPin size={11} />Sfax, Tunisie
-                  </span>
-                </div>
-              </div>
+                }
+                company="SiFAST"
+                role={t('exp.role_devops')}
+                date="02/2019 – 09/2023"
+                duration="4 yrs 7 mos"
+                location="Sfax, Tunisie"
+              />
               <div className="px-6 py-5">
                 <BulletList items={SIFAST_GENERAL.map(k => t(`exp.sifast.${k}`))} />
 
-                {/* Accordion */}
+                {/* Accordion trigger */}
                 <button
+                  type="button"
                   onClick={() => setOpen(o => !o)}
-                  className="w-full flex items-center justify-between px-4 py-2.5 border border-white/[0.07] rounded-lg text-sm font-mono text-blue-400 hover:bg-blue-400/[0.04] hover:border-blue-400/30 transition-all duration-300 mb-0"
+                  className="relative z-10 w-full flex items-center justify-between px-4 py-2.5 border border-white/[0.07] rounded-lg text-sm font-mono text-blue-400 hover:bg-blue-400/[0.06] hover:border-blue-400/30 transition-all duration-300"
                 >
-                  {t('exp.sifast.showMore')}
+                  <span className="flex items-center gap-2">
+                    <FolderOpen size={14} />
+                    {open ? t('exp.sifast.showLess') : t('exp.sifast.showMore')}
+                  </span>
                   <ChevronDown size={14} className={`transition-transform duration-300 ${open ? 'rotate-180' : ''}`} />
                 </button>
 
-                <div className={`overflow-hidden transition-all duration-500 ${open ? 'max-h-[3000px] mt-4' : 'max-h-0'}`}>
-                  <div className="flex flex-col gap-4">
-                    {SIFAST_PROJECTS.map(({ key, items }) => (
-                      <div key={key} className="border-b border-white/[0.07] pb-4 last:border-0 last:pb-0">
-                        <h4 className="font-mono text-xs font-semibold text-violet-400 mb-3">{t(`exp.sifast.${key}`)}</h4>
-                        <BulletList items={items.map(k => t(`exp.sifast.${k}`))} />
-                      </div>
-                    ))}
+                {/* CSS grid accordion — smooth animation without max-height issues */}
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateRows: open ? '1fr' : '0fr',
+                    transition: 'grid-template-rows 400ms ease, margin-top 400ms ease',
+                    marginTop: open ? '16px' : '0',
+                  }}
+                >
+                  <div style={{ overflow: 'hidden' }}>
+                    <div className="flex flex-col gap-4">
+                      {SIFAST_PROJECTS.map(({ key, items }) => (
+                        <div key={key} className="border-b border-white/[0.07] pb-4 last:border-0 last:pb-0">
+                          <h4 className="font-mono text-xs font-semibold text-violet-400 mb-3">{t(`exp.sifast.${key}`)}</h4>
+                          <BulletList items={items.map(k => t(`exp.sifast.${k}`))} />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
 

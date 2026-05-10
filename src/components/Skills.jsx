@@ -1,6 +1,61 @@
 import { Layers, GitBranch, Cloud, BarChart2, Terminal, Plug } from 'lucide-react'
+import {
+  SiKubernetes, SiDocker, SiHelm, SiPodman,
+  SiJenkins, SiGitlab, SiAnsible, SiArgo,
+  SiTerraform,
+  SiGrafana, SiPrometheus, SiElasticsearch, SiKibana, SiElastic, SiLogstash,
+  SiPython, SiJavascript, SiNodedotjs, SiGit, SiGnubash,
+  SiRedis, SiSonarqubeserver,
+} from 'react-icons/si'
 import { useLang } from '../context/LangContext'
 import Reveal from './Reveal'
+
+// Custom SVG icons for tools not covered by react-icons/si
+const AzureIcon = ({ size = 11 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M13.05 4.24L6.56 18.05H2L7.09 9.24L13.05 4.24ZM13.74 5.33L22 18.05H9.83L17.29 16.56L12.33 10.62L13.74 5.33Z"/>
+  </svg>
+)
+
+const LokiIcon = ({ size = 11 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h12v2H3v-2z"/>
+  </svg>
+)
+
+const GraviteeIcon = ({ size = 11 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M14 12h-2v2h2v1.5c-.5.3-1.2.5-2 .5-2.2 0-4-1.8-4-4s1.8-4 4-4c1.1 0 2 .4 2.8 1l1.4-1.5A5.9 5.9 0 0 0 12 6a6 6 0 0 0 0 12c1.8 0 3.4-.8 4.5-2V12H14z"/>
+  </svg>
+)
+
+const TECH_ICONS = {
+  'Kubernetes':    SiKubernetes,
+  'Docker':        SiDocker,
+  'Podman':        SiPodman,
+  'HELM':          SiHelm,
+  'Jenkins':       SiJenkins,
+  'GitLab CI/CD':  SiGitlab,
+  'ArgoCD':        SiArgo,
+  'Ansible':       SiAnsible,
+  'Azure':         AzureIcon,
+  'Terraform':     SiTerraform,
+  'Grafana':       SiGrafana,
+  'Prometheus':    SiPrometheus,
+  'Kibana':        SiKibana,
+  'Elasticsearch': SiElasticsearch,
+  'Filebeat':      SiElastic,
+  'Logstash':      SiLogstash,
+  'Loki':          LokiIcon,
+  'Bash / Shell':  SiGnubash,
+  'Python':        SiPython,
+  'JavaScript':    SiJavascript,
+  'Node.js':       SiNodedotjs,
+  'Git':           SiGit,
+  'Gravitee':      GraviteeIcon,
+  'Redis':         SiRedis,
+  'SonarQube':     SiSonarqubeserver,
+}
 
 const CATEGORIES = [
   {
@@ -43,7 +98,7 @@ const CATEGORIES = [
     iconCls: 'text-pink-400 bg-pink-400/10',
     tagCls:  'text-pink-400 bg-pink-400/[0.08] border-pink-400/20 hover:bg-pink-400/20 hover:border-pink-400/40',
     glow:    'hover:shadow-[0_4px_32px_rgba(244,114,182,0.15)]',
-    tags: ['Gravitee APIM', 'Gravitee AM', 'Redis', 'SonarQube'],
+    tags: ['Gravitee', 'Redis', 'SonarQube'],
   },
 ]
 
@@ -69,17 +124,18 @@ export default function Skills() {
                   <h3 className="text-sm font-semibold">{t(i18n)}</h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {tags.map((tag, j) => (
-                    <span
-                      key={tag}
-                      className={`px-3 py-1 rounded-full text-xs font-medium font-mono border transition-all duration-200 cursor-default ${tagCls}`}
-                      style={{
-                        animationDelay: `${i * 70 + j * 60}ms`,
-                      }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  {tags.map(tag => {
+                    const TIcon = TECH_ICONS[tag]
+                    return (
+                      <span
+                        key={tag}
+                        className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium font-mono border transition-all duration-200 cursor-default ${tagCls}`}
+                      >
+                        {TIcon && <TIcon size={11} />}
+                        {tag}
+                      </span>
+                    )
+                  })}
                 </div>
               </div>
             </Reveal>

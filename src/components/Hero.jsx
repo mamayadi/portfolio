@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { ArrowRight, Download, MessageSquare } from 'lucide-react'
 
 import { useLang } from '../context/LangContext'
 
@@ -104,21 +105,24 @@ export default function Hero() {
         <div className="flex gap-3 justify-center flex-wrap mb-10 sm:mb-14">
           <a
             href="#experience"
-            className="px-6 py-3 bg-blue-400 text-base rounded-lg font-medium text-sm hover:bg-blue-300 hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_24px_rgba(96,165,250,0.25)] hover:shadow-[0_8px_32px_rgba(96,165,250,0.45)]"
+            className="flex items-center gap-2 px-6 py-3 bg-blue-400 text-base rounded-lg font-medium text-sm hover:bg-blue-300 hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_24px_rgba(96,165,250,0.25)] hover:shadow-[0_8px_32px_rgba(96,165,250,0.45)]"
           >
             {t('hero.cta1')}
+            <ArrowRight size={15} />
           </a>
           <a
             href="./CV_Mohamed_AYADI_VF.pdf"
             download
-            className="px-6 py-3 border border-white/[0.13] text-slate-100 rounded-lg font-medium text-sm hover:border-blue-400 hover:text-blue-400 hover:-translate-y-0.5 transition-all duration-300"
+            className="flex items-center gap-2 px-6 py-3 border border-white/[0.13] text-slate-100 rounded-lg font-medium text-sm hover:border-blue-400 hover:text-blue-400 hover:-translate-y-0.5 transition-all duration-300"
           >
+            <Download size={15} />
             {t('hero.cta2')}
           </a>
           <a
             href="#contact"
-            className="px-6 py-3 bg-white/[0.05] border border-white/[0.07] text-slate-400 rounded-lg font-medium text-sm hover:bg-white/[0.09] hover:text-slate-100 hover:-translate-y-0.5 transition-all duration-300"
+            className="flex items-center gap-2 px-6 py-3 bg-white/[0.05] border border-white/[0.07] text-slate-400 rounded-lg font-medium text-sm hover:bg-white/[0.09] hover:text-slate-100 hover:-translate-y-0.5 transition-all duration-300"
           >
+            <MessageSquare size={14} />
             {t('hero.cta3')}
           </a>
         </div>

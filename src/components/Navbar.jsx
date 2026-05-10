@@ -1,7 +1,15 @@
 import { useState, useEffect } from 'react'
+import { User, Cpu, Briefcase, GraduationCap, Award, Mail } from 'lucide-react'
 import { useLang } from '../context/LangContext'
 
-const SECTIONS = ['about', 'skills', 'experience', 'education', 'certifications', 'contact']
+const SECTIONS = [
+  { key: 'about',          Icon: User },
+  { key: 'skills',         Icon: Cpu },
+  { key: 'experience',     Icon: Briefcase },
+  { key: 'education',      Icon: GraduationCap },
+  { key: 'certifications', Icon: Award },
+  { key: 'contact',        Icon: Mail },
+]
 
 export default function Navbar() {
   const { lang, t, toggleLang } = useLang()
@@ -29,12 +37,13 @@ export default function Navbar() {
 
         {/* Desktop links */}
         <ul className="hidden md:flex gap-7 items-center">
-          {SECTIONS.map(key => (
+          {SECTIONS.map(({ key, Icon }) => (
             <li key={key}>
               <a
                 href={`#${key}`}
-                className="text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors relative group"
+                className="flex items-center gap-1.5 text-sm font-medium text-slate-400 hover:text-slate-100 transition-colors relative group"
               >
+                <Icon size={13} className="opacity-50 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                 {t(`nav.${key}`)}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-400 rounded group-hover:w-full transition-all duration-300" />
               </a>
@@ -69,13 +78,14 @@ export default function Navbar() {
       {/* Mobile menu */}
       <div className={`md:hidden bg-base/95 backdrop-blur-md border-b border-white/[0.07] transition-all duration-300 overflow-hidden ${menuOpen ? 'max-h-96' : 'max-h-0'}`}>
         <ul className="flex flex-col py-2">
-          {SECTIONS.map(key => (
+          {SECTIONS.map(({ key, Icon }) => (
             <li key={key}>
               <a
                 href={`#${key}`}
                 onClick={() => setMenuOpen(false)}
-                className="block px-6 py-3.5 text-slate-300 hover:text-blue-400 text-[15px] transition-colors"
+                className="flex items-center gap-3 px-6 py-3.5 text-slate-300 hover:text-blue-400 text-[15px] transition-colors"
               >
+                <Icon size={16} className="opacity-60 flex-shrink-0" />
                 {t(`nav.${key}`)}
               </a>
             </li>
