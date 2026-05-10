@@ -28,6 +28,8 @@ function SchoolLogo({ src, alt }) {
       <img
         src={src}
         alt={alt}
+        loading="lazy"
+        decoding="async"
         onError={() => setFailed(true)}
         className="w-14 h-14 rounded-lg object-contain p-1.5 bg-white flex-shrink-0"
       />

@@ -1,14 +1,15 @@
 import { Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
 
+import { AVAILABLE } from '../config'
 import Reveal from './Reveal'
 import { useLang } from '../context/LangContext'
 
 const CONTACT_LINKS = [
-  { icon: MapPin,   label: 'Lyon, France',                   href: null },
-  { icon: Mail,     label: 'ayadi-mohamed@outlook.com',       href: 'mailto:ayadi-mohamed@outlook.com' },
-  { icon: Phone,    label: '07 45 53 45 22',                  href: 'tel:+33745534522' },
-  { icon: Linkedin, label: 'LinkedIn',                        href: 'https://www.linkedin.com/in/mohamed-ayadi/' },
-  { icon: Github,   label: 'GitHub',                          href: 'http://github.com/mamayadi/' },
+  { icon: MapPin,   label: 'Lyon, France',                                        href: null },
+  { icon: Mail,     label: 'ayadi-mohamed@outlook.com',                            href: 'mailto:ayadi-mohamed@outlook.com' },
+  { icon: Phone,    label: AVAILABLE ? '+33 7 45 53 45 22' : '+33 * ** ** ** **', href: AVAILABLE ? 'tel:+33745534522' : null },
+  { icon: Linkedin, label: 'LinkedIn',                                             href: 'https://www.linkedin.com/in/mohamed-ayadi/' },
+  { icon: Github,   label: 'GitHub',                                               href: 'http://github.com/mamayadi/' },
 ]
 
 const LANGS = [
@@ -46,6 +47,8 @@ export default function About() {
               <img
                 src="./assets/profile.png"
                 alt="Mohamed AYADI"
+                loading="lazy"
+                decoding="async"
                 className="absolute inset-0 w-full h-full rounded-full object-cover object-top z-[3]"
                 onError={e => { e.currentTarget.style.display = 'none' }}
               />
@@ -54,13 +57,15 @@ export default function About() {
             {/* Contact info */}
             <div className="flex flex-col gap-2 w-full">
               {CONTACT_LINKS.map(({ icon: Icon, label, href }) => {
-                const cls = "flex items-center gap-3 px-4 py-2.5 bg-card border border-white/[0.07] rounded-lg text-sm text-slate-400 transition-all duration-300 hover:border-blue-400/50 hover:text-blue-400 hover:bg-blue-400/[0.04]"
+                const linkCls = "flex items-center gap-3 px-4 py-2.5 bg-card border border-white/[0.07] rounded-lg text-sm text-slate-400 transition-all duration-300 hover:border-blue-400/50 hover:text-blue-400 hover:bg-blue-400/[0.04]"
+                const lockedCls = "flex items-center gap-3 px-4 py-2.5 bg-card border border-white/[0.04] rounded-lg text-sm text-slate-600 cursor-default select-none tracking-widest"
+                const isLocked = href === null && label.includes('*')
                 return href
-                  ? <a key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noopener" className={cls}>
+                  ? <a key={label} href={href} target={href.startsWith('http') ? '_blank' : undefined} rel="noopener" className={linkCls}>
                       <Icon size={14} className="text-blue-400 flex-shrink-0" />{label}
                     </a>
-                  : <div key={label} className={cls}>
-                      <Icon size={14} className="text-blue-400 flex-shrink-0" />{label}
+                  : <div key={label} className={isLocked ? lockedCls : linkCls}>
+                      <Icon size={14} className={`flex-shrink-0 ${isLocked ? 'text-slate-700' : 'text-blue-400'}`} />{label}
                     </div>
               })}
             </div>

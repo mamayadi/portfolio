@@ -1,11 +1,23 @@
-import { ChevronDown, MapPin, Calendar, Clock, FolderOpen } from 'lucide-react'
+import { Calendar, ChevronDown, FolderOpen, MapPin } from 'lucide-react'
 import {
-  SiKubernetes, SiDocker, SiHelm, SiPodman,
-  SiJenkins, SiGitlab, SiAnsible, SiArgo,
+  SiAngular,
+  SiAnsible,
+  SiArgo,
+  SiDocker,
+  SiElasticsearch,
+  SiElasticstack,
+  SiGitlab,
+  SiGrafana,
+  SiHelm,
+  SiJenkins,
+  SiKubernetes,
+  SiPodman,
+  SiPrometheus,
+  SiRedhat,
+  SiRedis,
+  SiSonarqubeserver,
+  SiSymfony,
   SiTerraform,
-  SiGrafana, SiPrometheus, SiElasticsearch, SiElasticstack,
-  SiRedis, SiSonarqubeserver,
-  SiAngular, SiSymfony,
 } from 'react-icons/si'
 
 import Reveal from './Reveal'
@@ -45,6 +57,7 @@ const TECH_ICONS = {
   'Elasticsearch':    SiElasticsearch,
   'Angular':          SiAngular,
   'Symfony':          SiSymfony,
+  'SELinux':          SiRedhat,
 }
 
 const APRIL_ITEMS = ['i1','i2','i3','i4','i5','i6','i7','i8','i9']
@@ -69,6 +82,8 @@ function CompanyLogo({ src, fallbackText, bg, textColor }) {
       <img
         src={src}
         alt={fallbackText}
+        loading="lazy"
+        decoding="async"
         onError={() => setImgFailed(true)}
         className="w-12 h-12 rounded-xl object-contain p-1.5 bg-white flex-shrink-0"
       />
@@ -114,16 +129,8 @@ function Tags({ tags }) {
   )
 }
 
-function DurationBadge({ label }) {
-  return (
-    <span className="inline-flex items-center gap-1 font-mono text-[10px] text-slate-500 bg-white/[0.04] border border-white/[0.07] px-2 py-0.5 rounded">
-      <Clock size={9} />
-      {label}
-    </span>
-  )
-}
 
-function CardHeader({ logo, company, role, date, duration, location }) {
+function CardHeader({ logo, company, role, date, location }) {
   return (
     <div className="flex flex-wrap justify-between gap-x-4 gap-y-3 px-6 pt-6 pb-4 border-b border-white/[0.07]">
       {/* Left: logo + company + role */}
@@ -134,13 +141,12 @@ function CardHeader({ logo, company, role, date, duration, location }) {
           <span className="text-sm text-blue-400 font-medium">{role}</span>
         </div>
       </div>
-      {/* Right: date + duration + location — left on mobile, right on desktop */}
+      {/* Right: date + location — left on mobile, right on desktop */}
       <div className="flex flex-col items-start sm:items-end gap-1.5 justify-center">
         <span className="flex items-center gap-1.5 font-mono text-xs text-slate-400">
           <Calendar size={11} />
           {date}
         </span>
-        <DurationBadge label={duration} />
         <span className="flex items-center gap-1.5 text-xs text-slate-600">
           <MapPin size={11} />
           {location}
@@ -191,7 +197,6 @@ export default function Experience() {
                 company="APRIL"
                 role={t('exp.role_devops')}
                 date="10/2023 – 12/2024"
-                duration="1 yr 2 mos"
                 location="Lyon, France"
               />
               <div className="px-6 py-5">
@@ -217,7 +222,6 @@ export default function Experience() {
                 company="SiFAST"
                 role={t('exp.role_devops')}
                 date="02/2019 – 09/2023"
-                duration="4 yrs 7 mos"
                 location="Sfax, Tunisie"
               />
               <div className="px-6 py-5">

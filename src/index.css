@@ -6,9 +6,11 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    background-color: #030712;
   }
   body {
     overflow-x: hidden;
+    background-color: #030712;
     @apply text-slate-100;
   }
 }

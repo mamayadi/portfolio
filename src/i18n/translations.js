@@ -21,8 +21,8 @@ export const translations = {
 
     'about.tag':       '// à propos',
     'about.title':     'À Propos de Moi',
-    'about.p1':        "Ingénieur DevOps passionné avec plus de 5 ans d'expérience dans la conception et l'opération d'infrastructures cloud-native modernes. Spécialisé dans la conteneurisation, l'orchestration Kubernetes, les pipelines CI/CD robustes et l'automatisation des infrastructures.",
-    'about.p2':        "Fort d'une expertise reconnue chez APRIL et SiFAST, j'ai mené des migrations complexes, optimisé des performances système et déployé des solutions à grande échelle dans des environnements Agile. Certifié Azure Administrator Associate et HashiCorp Terraform Associate.",
+    'about.p1':        "Ingénieur Cloud DevOps passionné avec plus de 5 ans d'expérience dans la conception et l'opération d'infrastructures cloud-native modernes. Spécialisé dans la conteneurisation, l'orchestration Kubernetes, les pipelines CI/CD robustes et l'automatisation des infrastructures sur des environnements multi-cloud.",
+    'about.p2':        "Fort d'une expertise reconnue chez APRIL et SiFAST, j'ai mené des migrations complexes, optimisé des performances système et déployé des solutions à grande échelle dans des environnements Agile. Certifié Azure Administrator Associate (AZ-104), HashiCorp Terraform Associate et Certified DevSecOps Professional (CDP).",
     'about.languages': 'Langues',
     'lang.fr':         'Français',    'lang.fr_lvl':     'Courant',
     'lang.en':         'Anglais',     'lang.en_lvl':     'Courant',
@@ -86,11 +86,12 @@ export const translations = {
     'cert.terraform': 'Terraform Associate',
     'cert.devsecops': 'Certified DevSecOps Professional',
 
-    'contact.tag':  '// contact',
-    'contact.title':'Me Contacter',
-    'contact.sub':  'Disponible pour de nouvelles opportunités',
-    'contact.email':'Email',
-    'contact.phone':'Téléphone',
+    'contact.tag':           '// contact',
+    'contact.title':         'Me Contacter',
+    'contact.sub_available': 'Disponible pour de nouvelles opportunités',
+    'contact.sub_unavailable':'En mission · Ouvert aux opportunités futures',
+    'contact.email':         'Email',
+    'contact.phone':         'Téléphone',
 
     'footer.role': 'Ingénieur DevOps',
   },
@@ -117,8 +118,8 @@ export const translations = {
 
     'about.tag':       '// about',
     'about.title':     'About Me',
-    'about.p1':        "Passionate DevOps Engineer with 5+ years of experience designing and operating modern cloud-native infrastructures. Specialized in containerization, Kubernetes orchestration, robust CI/CD pipelines, and infrastructure automation.",
-    'about.p2':        "With proven expertise at APRIL and SiFAST, I have led complex migrations, optimized system performance, and deployed large-scale solutions in Agile environments. Certified Azure Administrator Associate and HashiCorp Terraform Associate.",
+    'about.p1':        "Passionate Cloud DevOps Engineer with 5+ years of experience designing and operating modern cloud-native infrastructures. Specialized in containerization, Kubernetes orchestration, robust CI/CD pipelines, and infrastructure automation across multi-cloud environments.",
+    'about.p2':        "With proven expertise at APRIL and SiFAST, I have led complex migrations, optimized system performance, and deployed large-scale solutions in Agile environments. Certified Azure Administrator Associate (AZ-104), HashiCorp Terraform Associate, and Certified DevSecOps Professional (CDP).",
     'about.languages': 'Languages',
     'lang.fr':         'French',  'lang.fr_lvl':     'Fluent',
     'lang.en':         'English', 'lang.en_lvl':     'Fluent',
@@ -182,9 +183,10 @@ export const translations = {
     'cert.terraform': 'Terraform Associate',
     'cert.devsecops': 'Certified DevSecOps Professional',
 
-    'contact.tag':  '// contact',
-    'contact.title':'Get In Touch',
-    'contact.sub':  'Open to new opportunities',
+    'contact.tag':           '// contact',
+    'contact.title':         'Get In Touch',
+    'contact.sub_available': 'Open to new opportunities',
+    'contact.sub_unavailable':'On a mission · Open to future opportunities',
     'contact.email':'Email',
     'contact.phone':'Phone',
 
