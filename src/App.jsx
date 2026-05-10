@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { LangProvider } from './context/LangContext'
+import { ThemeProvider } from './context/ThemeContext'
 
 // Eager — always above the fold
 import Navbar from './components/Navbar'
@@ -24,6 +25,7 @@ function SectionSkeleton() {
 
 export default function App() {
   return (
+    <ThemeProvider>
     <LangProvider>
       <Navbar />
       <main>
@@ -51,5 +53,6 @@ export default function App() {
         <Footer />
       </Suspense>
     </LangProvider>
+    </ThemeProvider>
   )
 }

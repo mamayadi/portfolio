@@ -37,8 +37,8 @@ export default function About() {
             <div className="relative w-[190px] h-[190px] flex-shrink-0 mx-auto">
               {/* Spinning gradient ring */}
               <div className="absolute -inset-[5px] rounded-full avatar-ring-bg animate-spin-slow z-0" />
-              {/* Dark mask to create ring gap */}
-              <div className="absolute -inset-[2px] rounded-full bg-[#030712] z-[1]" />
+              {/* Mask to create ring gap — matches page background */}
+              <div className="absolute -inset-[2px] rounded-full bg-base z-[1]" />
               {/* Fallback initials (shown if image fails) */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-400 to-violet-400 flex items-center justify-center text-5xl font-bold text-[#030712] z-[2]">
                 MA

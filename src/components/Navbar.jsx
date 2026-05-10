@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
-import { User, Cpu, Briefcase, GraduationCap, Award, Mail } from 'lucide-react'
+import { User, Cpu, Briefcase, GraduationCap, Award, Mail, Sun, Moon } from 'lucide-react'
 import { useLang } from '../context/LangContext'
+import { useTheme } from '../context/ThemeContext'
 
 const SECTIONS = [
   { key: 'about',          Icon: User },
@@ -13,6 +14,7 @@ const SECTIONS = [
 
 export default function Navbar() {
   const { lang, t, toggleLang } = useLang()
+  const { theme, toggleTheme } = useTheme()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -62,6 +64,15 @@ export default function Navbar() {
             <span className="opacity-45">{lang === 'fr' ? 'EN' : 'FR'}</span>
           </button>
 
+          {/* Theme toggle */}
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className="w-8 h-8 flex items-center justify-center rounded-full border border-white/[0.13] text-slate-400 hover:border-blue-400 hover:text-blue-400 transition-all duration-300"
+          >
+            {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
+          </button>
+
           {/* Hamburger */}
           <button
             className="md:hidden flex flex-col gap-[5px] p-1"
@@ -76,7 +87,7 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden bg-base/95 backdrop-blur-md border-b border-white/[0.07] transition-all duration-300 overflow-hidden ${menuOpen ? 'max-h-96' : 'max-h-0'}`}>
+      <div className={`md:hidden bg-base/95 backdrop-blur-md transition-all duration-300 overflow-hidden ${menuOpen ? 'max-h-96 border-b border-white/[0.07]' : 'max-h-0'}`}>
         <ul className="flex flex-col py-2">
           {SECTIONS.map(({ key, Icon }) => (
             <li key={key}>

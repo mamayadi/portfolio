@@ -1,14 +1,31 @@
-import { Layers, GitBranch, Cloud, BarChart2, Terminal, Plug } from 'lucide-react'
+import { BarChart2, Cloud, GitBranch, Layers, Plug, Terminal } from 'lucide-react'
 import {
-  SiKubernetes, SiDocker, SiHelm, SiPodman,
-  SiJenkins, SiGitlab, SiAnsible, SiArgo,
+  SiAnsible,
+  SiArgo,
+  SiDocker,
+  SiElastic,
+  SiElasticsearch,
+  SiGit,
+  SiGitlab,
+  SiGnubash,
+  SiGrafana,
+  SiHelm,
+  SiJavascript,
+  SiJenkins,
+  SiKibana,
+  SiKubernetes,
+  SiLogstash,
+  SiNodedotjs,
+  SiPodman,
+  SiPrometheus,
+  SiPython,
+  SiRedis,
+  SiSonarqubeserver,
   SiTerraform,
-  SiGrafana, SiPrometheus, SiElasticsearch, SiKibana, SiElastic, SiLogstash,
-  SiPython, SiJavascript, SiNodedotjs, SiGit, SiGnubash,
-  SiRedis, SiSonarqubeserver,
 } from 'react-icons/si'
-import { useLang } from '../context/LangContext'
+
 import Reveal from './Reveal'
+import { useLang } from '../context/LangContext'
 
 // Custom SVG icons for tools not covered by react-icons/si
 const AzureIcon = ({ size = 11 }) => (
@@ -30,31 +47,31 @@ const GraviteeIcon = ({ size = 11 }) => (
 )
 
 const TECH_ICONS = {
-  'Kubernetes':    SiKubernetes,
-  'Docker':        SiDocker,
-  'Podman':        SiPodman,
-  'HELM':          SiHelm,
-  'Jenkins':       SiJenkins,
-  'GitLab CI/CD':  SiGitlab,
-  'ArgoCD':        SiArgo,
-  'Ansible':       SiAnsible,
-  'Azure':         AzureIcon,
-  'Terraform':     SiTerraform,
-  'Grafana':       SiGrafana,
-  'Prometheus':    SiPrometheus,
-  'Kibana':        SiKibana,
-  'Elasticsearch': SiElasticsearch,
-  'Filebeat':      SiElastic,
-  'Logstash':      SiLogstash,
-  'Loki':          LokiIcon,
-  'Bash / Shell':  SiGnubash,
-  'Python':        SiPython,
-  'JavaScript':    SiJavascript,
-  'Node.js':       SiNodedotjs,
-  'Git':           SiGit,
-  'Gravitee':      GraviteeIcon,
-  'Redis':         SiRedis,
-  'SonarQube':     SiSonarqubeserver,
+  'Kubernetes':         SiKubernetes,
+  'Docker':             SiDocker,
+  'Podman':             SiPodman,
+  'HELM':               SiHelm,
+  'Jenkins':            SiJenkins,
+  'GitLab CI/CD':       SiGitlab,
+  'ArgoCD':             SiArgo,
+  'Ansible':            SiAnsible,
+  'Azure':              AzureIcon,
+  'Terraform':          SiTerraform,
+  'Grafana':            SiGrafana,
+  'Prometheus':         SiPrometheus,
+  'Kibana':             SiKibana,
+  'Elasticsearch':      SiElasticsearch,
+  'Filebeat':           SiElastic,
+  'Logstash':           SiLogstash,
+  'Loki':               LokiIcon,
+  'Bash / Shell':       SiGnubash,
+  'Python':             SiPython,
+  'JavaScript':         SiJavascript,
+  'Node.js':            SiNodedotjs,
+  'Git':                SiGit,
+  'Gravitee (APIM/AM)': GraviteeIcon,
+  'Redis':              SiRedis,
+  'SonarQube':          SiSonarqubeserver,
 }
 
 const CATEGORIES = [
@@ -98,7 +115,7 @@ const CATEGORIES = [
     iconCls: 'text-pink-400 bg-pink-400/10',
     tagCls:  'text-pink-400 bg-pink-400/[0.08] border-pink-400/20 hover:bg-pink-400/20 hover:border-pink-400/40',
     glow:    'hover:shadow-[0_4px_32px_rgba(244,114,182,0.15)]',
-    tags: ['Gravitee', 'Redis', 'SonarQube'],
+    tags: ['Gravitee (APIM/AM)', 'Redis', 'SonarQube'],
   },
 ]
 

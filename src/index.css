@@ -2,19 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── THEME TOKENS ────────────────────────────────────────────── */
+/* Colors are space-separated RGB channels so Tailwind's         */
+/* opacity modifier (bg-base/90) works correctly.               */
+
+:root {
+  /* Light theme (default) */
+  --bg-base:     248 250 252;   /* #f8fafc  slate-50    */
+  --bg-base-alt: 241 245 249;   /* #f1f5f9  slate-100  */
+  --bg-card:     255 255 255;   /* #ffffff              */
+  --bg-card2:    248 250 252;   /* #f8fafc              */
+}
+
+:root.dark {
+  /* Dark theme */
+  --bg-base:     3 7 18;        /* #030712             */
+  --bg-base-alt: 7 13 26;       /* #070d1a             */
+  --bg-card:     13 17 23;      /* #0d1117             */
+  --bg-card2:    17 24 39;      /* #111827             */
+}
+
+/* ── BASE LAYER ──────────────────────────────────────────────── */
 @layer base {
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
-    background-color: #030712;
+    background-color: rgb(var(--bg-base));
   }
   body {
     overflow-x: hidden;
-    background-color: #030712;
-    @apply text-slate-100;
+    background-color: rgb(var(--bg-base));
+    color: #0f172a; /* slate-900 — light mode default */
+  }
+  .dark body {
+    color: #f1f5f9; /* slate-100 — dark mode */
   }
 }
 
+/* ── GLOBAL LIGHT-MODE OVERRIDES ─────────────────────────────── */
+/* When .dark is absent, flip the dark-specific Tailwind         */
+/* utilities to their light-mode equivalents without touching    */
+/* every component.                                              */
+
+/* Text */
+html:not(.dark) .text-slate-100 { color: #0f172a; }
+html:not(.dark) .text-slate-200 { color: #1e293b; }
+html:not(.dark) .text-slate-300 { color: #334155; }
+html:not(.dark) .text-slate-400 { color: #475569; }
+
+/* Hover text */
+html:not(.dark) .hover\:text-slate-100:hover { color: #0f172a; }
+html:not(.dark) .group:hover .group-hover\:text-slate-400 { color: #64748b; }
+
+/* Hamburger bars (white in dark → dark in light) */
+html:not(.dark) .bg-slate-100 { background-color: #1e293b; }
+
+/* Borders (white-transparent → black-transparent) */
+html:not(.dark) .border-white\/\[0\.04\]  { border-color: rgb(0 0 0 / 0.05);  }
+html:not(.dark) .border-white\/\[0\.07\]  { border-color: rgb(0 0 0 / 0.09);  }
+html:not(.dark) .border-white\/\[0\.13\]  { border-color: rgb(0 0 0 / 0.12);  }
+html:not(.dark) .border-white\/\[0\.15\]  { border-color: rgb(0 0 0 / 0.15);  }
+html:not(.dark) .border-white\/\[0\.20\]  { border-color: rgb(0 0 0 / 0.20);  }
+
+/* Hover borders */
+html:not(.dark) .hover\:border-white\/\[0\.13\]:hover { border-color: rgb(0 0 0 / 0.12); }
+html:not(.dark) .hover\:border-white\/\[0\.15\]:hover { border-color: rgb(0 0 0 / 0.15); }
+
+/* Background overlays (white-transparent → black-transparent) */
+html:not(.dark) .bg-white\/\[0\.04\]  { background-color: rgb(0 0 0 / 0.03); }
+html:not(.dark) .bg-white\/\[0\.05\]  { background-color: rgb(0 0 0 / 0.04); }
+html:not(.dark) .bg-white\/\[0\.06\]  { background-color: rgb(0 0 0 / 0.04); }
+html:not(.dark) .bg-white\/\[0\.09\]  { background-color: rgb(0 0 0 / 0.05); }
+html:not(.dark) .bg-white\/\[0\.13\]  { background-color: rgb(0 0 0 / 0.07); }
+
+/* Hover bg overlays */
+html:not(.dark) .hover\:bg-white\/\[0\.09\]:hover { background-color: rgb(0 0 0 / 0.05); }
+
+/* Shimmer sweep — use dark shimmer on light cards */
+html:not(.dark) .shimmer-card::after {
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(0, 0, 0, 0.04) 50%,
+    transparent 60%
+  );
+}
+
+/* Hero grid — slightly more visible on light backgrounds */
+html:not(.dark) .hero-grid {
+  background-image:
+    linear-gradient(rgba(96, 165, 250, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96, 165, 250, 0.07) 1px, transparent 1px);
+}
+
+/* ── UTILITIES ───────────────────────────────────────────────── */
 @layer utilities {
   .gradient-text {
     background: linear-gradient(135deg, #60a5fa, #a78bfa, #818cf8, #60a5fa);
@@ -66,6 +147,12 @@
   .shimmer-card:hover::after {
     opacity: 1;
     animation: shimmer 0.7s ease-out;
+  }
+
+  /* Card elevation in light mode — :where() keeps specificity at 0-1-0 so
+     Tailwind hover:shadow-[...] (0-2-0) can still override on hover */
+  :where(html:not(.dark)) .bg-card {
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.06), 0 1px 2px rgb(0 0 0 / 0.04);
   }
 
   /* Particle dots for hero */

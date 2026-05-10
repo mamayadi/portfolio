@@ -1,13 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        base:       '#030712',
-        'base-alt': '#070d1a',
-        card:       '#0d1117',
-        card2:      '#111827',
+        base:       'rgb(var(--bg-base) / <alpha-value>)',
+        'base-alt': 'rgb(var(--bg-base-alt) / <alpha-value>)',
+        card:       'rgb(var(--bg-card) / <alpha-value>)',
+        card2:      'rgb(var(--bg-card2) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
